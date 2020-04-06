@@ -3,9 +3,10 @@
 函数的返回值: promise对象
  */
 import ajax from './ajax'
-// const BASE_URL = 'http://localhost:4000'
+// const BASE_URL = 'http:/ /localhost:4000'
 const BASE_URL = '/api'
 
+export const reqFoodTypes = () => ajax(`${BASE_URL}/index_category`)
 // 1、根据经纬度获取位置详情
 export const reqAddress = (geohash) => ajax(`${BASE_URL}/position/${geohash}`)
 // 2、获取食品分类列表
@@ -25,6 +26,9 @@ export const reqUserInfo = () => ajax(BASE_URL+'/userinfo')
 // 10、用户登出
 export const reqLogout = () => ajax(BASE_URL+'/logout')
 
+
+
+//mock的数据
 /**
  * 获取商家信息
  */
