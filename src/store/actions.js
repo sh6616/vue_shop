@@ -36,7 +36,6 @@ export default {
     // 根据结果，提交一个mutation
     if (result.code === 0) {
       const address = result.data
-      console.log(address);
       commit(RECEIVE_ADDRESS, { address })
     }
   },
@@ -48,7 +47,6 @@ export default {
     // 提交一个mutation
     if (result.code === 0) {
       const categorys = result.data
-      console.log(categorys);
       commit(RECEIVE_CATEGORYS, { categorys })
     }
   },
@@ -61,7 +59,6 @@ export default {
     // 提交一个mutation
     if (result.code === 0) {
       const shops = result.data
-      console.log(shops);
       commit(RECEIVE_SHOPS, { shops })
     }
   },
@@ -94,12 +91,11 @@ export default {
     const result = await reqShopInfo()
     if (result.code === 0) {
       const info = result.data
-      console.log(info)
       commit(RECEIVE_INFO, { info })
     }
   },
 
-  // 异步获取商家评价列表，请求mock数据
+  // 异步获取商家评价列表
   async getShopRatings({ commit }, callback) {
     const result = await reqShopRatings()
     if (result.code === 0) {
@@ -110,7 +106,7 @@ export default {
     }
   },
 
-  // 异步获取商家商品列表，请求mock数据
+  // 异步获取商家商品列表
   async getShopGoods({ commit }, callback) {
     const result = await reqShopGoods()
     if (result.code === 0) {
