@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="goods">
+      <!-- 菜单--左边部分 -->
       <div class="menu-wrapper">
         <ul>
           <!--current-->
@@ -18,6 +19,7 @@
           </li>
         </ul>
       </div>
+      <!-- 食物详情---右边部分 -->
       <div class="foods-wrapper">
         <ul ref="foodsUl">
           <li class="food-list-hook" v-for="(good, index) in goods" :key="index">
@@ -48,7 +50,7 @@
                   </div>
                 </div>
               </li>
-            </ul>  
+            </ul>
           </li>
         </ul>
       </div>
@@ -75,7 +77,6 @@ export default {
     };
   },
   mounted() {
-    
     this.$store.dispatch("getShopGoods", () => {
       // 数据更新后执行
       // console.log(this.goods);
@@ -90,7 +91,6 @@ export default {
   },
   computed: {
     ...mapState(["goods"]),
-
 
     // 计算得到当前分类的下标
     currentIndex() {
@@ -137,13 +137,14 @@ export default {
       tops.push(top);
       // 2. 收集
       // 找到所有分类的li
-      const lis = this.$refs.foodsUl.getElementsByClassName("food-list-hook");//这是伪数组
-      Array.prototype.slice.call(lis).forEach(li => {//变为真数组
+      const lis = this.$refs.foodsUl.getElementsByClassName("food-list-hook"); //这是伪数组
+      Array.prototype.slice.call(lis).forEach(li => {
+        //变为真数组
         top += li.clientHeight;
         tops.push(top);
       });
       // console.log(tops);
-      
+
       // 3. 更新数据
       this.tops = tops;
     },
@@ -163,7 +164,7 @@ export default {
     // 显示点击的food
     showFood(food) {
       console.log(food);
-      
+
       // 设置food
       this.food = food;
       // 显示food组件 (在父组件中调用子组件对象的方法)
